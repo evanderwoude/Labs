@@ -1,0 +1,122 @@
+\documentclass[10pt]{exam}
+%\printanswers
+\usepackage{fullpage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.25cm}
+
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\hypersetup{
+  letterpaper,
+  colorlinks,
+  linkcolor=red,
+  citecolor=darkgreen,
+  menucolor=darkred,
+  urlcolor=blue,
+  pdfpagemode=none,
+  pdftitle={Introduction To Git},
+  pdfauthor={Christopher M. Bourke},
+  pdfcreator={$ $Id: cv-us.tex,v 1.28 2009/01/01 00:00:00 cbourke Exp $ $},
+  pdfsubject={PhD Thesis},
+  pdfkeywords={}
+}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.08,0.45}
+\definecolor{MyDarkRed}{rgb}{0.45,0.08,0}
+\definecolor{MyDarkGreen}{rgb}{0.08,0.45,0.08}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+%\usepackage{newfloat}
+\usepackage[newfloat=true]{minted}
+\setminted{mathescape,
+               linenos,
+               autogobble,
+               frame=none,
+               framesep=2mm,
+               framerule=0.4pt,
+               %label=foo,
+               xleftmargin=2em,
+               xrightmargin=0em,
+               startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+               numbersep=10pt, %gap between line numbers and start of line
+               style=default, %syntax highlighting style, default is "default"
+               			    %gallery: http://help.farbox.com/pygments.html
+			    	    %list available: pygmentize -L styles
+               bgcolor=mintedBackground} %prevents breaking across pages
+               
+\setmintedinline{bgcolor={mintedBackground}}
+\setminted[text]{bgcolor={mintedBackground},linenos=false,autogobble,xleftmargin=1em}
+%\setminted[php]{bgcolor=mintedBackgroundPHP} %startinline=True}
+\SetupFloatingEnvironment{listing}{name=Code Sample}
+\SetupFloatingEnvironment{listing}{listname=List of Code Samples}
+
+\begin{document}
+
+\section*{CSCE 155 - Lab 05 - Functions - Worksheet}
+
+Names: \underline{\hspace{10cm}}
+
+\begin{questions}
+
+\question Complete the table below using 3 functions you've used prior to this lab.
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+Return Type & Function Name & Parameter Type(s) \\
+\hline
+\hline
+\mintinline{c}{double} & \mintinline{c}{pow} & \mintinline{c}{(double, double)} \\
+\hline
+~ & ~ & ~ \\
+\hline
+~ & ~ & ~ \\
+\hline
+~ & ~ & ~ \\
+\hline
+\end{tabular}
+\end{center}
+
+\question Use \mintinline{text}{orderStatistic.c} to answer the following 
+questions.
+\begin{parts}
+  \part Identify all of the user-defined functions in the program along with the functions' return types and the number of parameters they accept.
+  \begin{solution}[2cm]
+  ~
+  \end{solution}
+  \part Among the functions \mintinline{c}{main}, \mintinline{c}{strToIntArray}, \mintinline{c}{insertionSort}, and \mintinline{c}{getOrderStatistic}: identify which function calls which other function(s).
+  \begin{solution}[2cm]
+  ~
+  \end{solution}
+  
+  \part How might you implement the following function?  Hint: it should only be a one-liner.
+\begin{minted}{c}
+int getMin(int *arr, n) {
+
+
+}
+\end{minted}
+
+  \part In the \mintinline{text}{orderStatistic.c} file, the prototypes and
+  documentation were placed before the main and all the definitions after it instead
+  of in their own separate files.  Identify 1 or 2 disadvantages to this approach.
+  \begin{solution}[2cm]
+  ~
+  \end{solution}
+    
+\end{parts}
+
+\question Demonstrate your final color utility program and testing file to a lab instructor, have them sign this worksheet and turn it in.
+
+\end{questions}
+  
+Lab Instructor Signature\underline{\hspace{7.5cm}}
+
+\end{document}
