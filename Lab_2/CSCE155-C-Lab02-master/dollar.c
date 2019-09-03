@@ -14,5 +14,13 @@ output. An example run would look something like the following:
 double main (){
 	double USD, BP, JPY;
 
-	
+	printf("Please input the total amount of US Dollars: ");
+	scanf("%lf", &USD);
+
+	USD = USD*.9;
+	USD = USD/2;
+	BP = USD*.6;
+	JPY = USD*76.8;
+
+	printf("You get %.2lf British Pounds and %.2lf Japanese JPY\n", BP, JPY);
 }
