@@ -1,6 +1,8 @@
 /**
  * Author: Chris Bourke
  *
+ * Lab Edits by Eric Vander Woude & Christina Madsen
+ *
  * This program prompts the user to enter the
  * base and the height of a triangle and computes
  * its area using the well-known formula
@@ -11,21 +13,24 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-int main(int argc, char **argv) {
+int main(int argc, char *argv[])
+{
+	double base = atof(argv[1]);
+	double height = atof(argv[2]);
 
-  double area, base, height;
+  	double area;
 
-	printf("Please enter the base of a triangle: ");
+	//printf("Please enter the base of a triangle: ");
 
-  scanf("%lf", &base);
+	//scanf("%lf", &base);
 
-  printf("Please enter the height of a triangle: ");
+	//printf("Please enter the height of a triangle: ");
 
-  scanf("%lf", &height);
+	//scanf("%lf", &height);
 
-  area = 1/2 * base * height;
+	area = (double)1/2 * base * height;
 
-	printf("The area is %f square units.\n", area);
+	printf("The area is %lf square units.\n", area);
 
 	return 0;
 }
