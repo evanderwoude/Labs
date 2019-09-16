@@ -1,0 +1,198 @@
+\documentclass[12pt]{scrartcl}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.25cm}
+
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\hypersetup{
+  letterpaper,
+  colorlinks,
+  linkcolor=red,
+  citecolor=darkgreen,
+  menucolor=darkred,
+  urlcolor=blue,
+  pdfpagemode=none,
+  pdftitle={Introduction To Git},
+  pdfauthor={Christopher M. Bourke},
+  pdfcreator={$ $Id: cv-us.tex,v 1.28 2009/01/01 00:00:00 cbourke Exp $ $},
+  pdfsubject={PhD Thesis},
+  pdfkeywords={}
+}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.08,0.45}
+\definecolor{MyDarkRed}{rgb}{0.45,0.08,0}
+\definecolor{MyDarkGreen}{rgb}{0.08,0.45,0.08}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+%\usepackage{newfloat}
+\usepackage[newfloat=true]{minted}
+\setminted{mathescape,
+               linenos,
+               autogobble,
+               frame=none,
+               framesep=2mm,
+               framerule=0.4pt,
+               %label=foo,
+               xleftmargin=2em,
+               xrightmargin=0em,
+               startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+               numbersep=10pt, %gap between line numbers and start of line
+               style=default, %syntax highlighting style, default is "default"
+               			    %gallery: http://help.farbox.com/pygments.html
+			    	    %list available: pygmentize -L styles
+               bgcolor=mintedBackground} %prevents breaking across pages
+               
+\setmintedinline{bgcolor={mintedBackground}}
+\setminted[text]{bgcolor={mintedBackground},linenos=false,autogobble,xleftmargin=1em}
+%\setminted[php]{bgcolor=mintedBackgroundPHP} %startinline=True}
+\SetupFloatingEnvironment{listing}{name=Code Sample}
+\SetupFloatingEnvironment{listing}{listname=List of Code Samples}
+
+
+\title{CSCE 155 - C}
+\subtitle{Lab 09 - Strings}
+\author{Dr.\ Chris Bourke}
+\date{~}
+
+\begin{document}
+
+\maketitle
+
+\section*{Prior to Lab}
+
+Before attending this lab:
+\begin{enumerate}
+  \item Read and familiarize yourself with this handout.
+  \item Review the following free textbook resources:
+	\begin{itemize}
+  	  \item \url{http://en.wikibooks.org/wiki/C_Programming/Strings }
+	\end{itemize}
+\end{enumerate}
+
+\section*{Peer Programming Pair-Up}
+
+To encourage collaboration and a team environment, labs will be
+structured in a \emph{pair programming} setup.  At the start of
+each lab, you will be randomly paired up with another student 
+(conflicts such as absences will be dealt with by the lab instructor).
+One of you will be designated the \emph{driver} and the other
+the \emph{navigator}.  
+
+The navigator will be responsible for reading the instructions and
+telling the driver what to do next.  The driver will be in charge of the
+keyboard and workstation.  Both driver and navigator are responsible
+for suggesting fixes and solutions together.  Neither the navigator
+nor the driver is ``in charge.''  Beyond your immediate pairing, you
+are encouraged to help and interact and with other pairs in the lab.
+
+Each week you should alternate: if you were a driver last week, 
+be a navigator next, etc.  Resolve any issues (you were both drivers
+last week) within your pair.  Ask the lab instructor to resolve issues
+only when you cannot come to a consensus.  
+
+Because of the peer programming setup of labs, it is absolutely 
+essential that you complete any pre-lab activities and familiarize
+yourself with the handouts prior to coming to lab.  Failure to do
+so will negatively impact your ability to collaborate and work with 
+others which may mean that you will not be able to complete the
+lab.  
+
+\section{Lab Objectives \& Topics}
+At the end of this lab you should be familiar with the following
+\begin{itemize}
+  \item Declare and print a string in C
+  \item Manipulate strings in a variety of ways
+  \item Use some basic functions from the \mintinline{text}{string.h} library
+\end{itemize}
+
+\section{Background}
+
+Strings are collections of characters.  In C, Strings are represented using 
+arrays of char values terminated by a special null-terminating character, 
+\mintinline{c}{\0}.  Because they are arrays, the same precautions must 
+be made when working with strings as with general arrays.  The standard 
+string library (\mintinline{text}{string.h}) provides many convenience 
+functions to manipulate and use strings.
+
+This lab will familiarize you with some of these functions.  In particular, 
+you will complete a program that implements a common children's game, 
+horse (also known as hangman).  In this game, an English word is chosen 
+at random and its characters hidden.  The player takes turns by guessing 
+a letter; each instance (if any) of the guessed letter is revealed.  If the 
+user is able to guess the word before a certain number of guessed letters 
+then they win.  If they run out of guesses then they lose.
+
+Most of the game mechanics have been implemented for you.  However, 
+you will need to complete the game by implementing several functions 
+used by the game to manipulate and compare strings.
+
+\section{Activities}
+
+Clone the code for this lab from GitHub using the following URL: 
+\url{https://github.com/cbourke/CSCE155-C-Lab09}.
+
+\subsection{Implementing String Manipulation Functions}
+
+\begin{enumerate}
+  \item Navigate to the \mintinline{text}{src} directory and open 
+  	\mintinline{text}{gameFunctions.c} in the editor of your choice.
+  \item There are several functions already fully implemented in this file.  
+	Your task for this lab is to implement the following four functions:
+	\begin{itemize}
+	  \item \mintinline{c}{initializeBlankString()} - This function should 
+	  take two arguments: an integer denoting the length of the 
+	  second argument, which should be a character array.  It should 
+	  return nothing.   The function should alter the passed array so that 
+	  it is filled with underscores, \mintinline{c}{_} and is a properly 
+	  terminated string.
+	  \item \mintinline{c}{printWithSpaces()} - This function will take a 
+	  string as input and print the contents of the string with spaces 
+	  between each character.  (Hint: use the strlen() function to find 
+	  the size of the passed string).   The function should return nothing.
+	  \item \mintinline{c}{revealGuessedLetter()} - This function will take 
+	  two strings and a character as input.   The function should alter 
+	  the second string in the following way: For every position in the 
+	  first string that contains the character passed in as the third 
+	  argument to the function, change the same position in the second 
+	  string to that character.  For example, if the first string is 
+	  \mintinline{c}{"dinosaur"} and the second is \mintinline{c}{"________"}
+	  and the character passed is \mintinline{c}{a}, then the function 
+	  should alter the second string so that it becomes \mintinline{c}{"_____a__"}.
+	  You may assume that the strings are of equal length.   The function 
+	  should return a 1 if any letters were changed in the second 
+	  string and 0 otherwise.
+	  \item \mintinline{c}{checkGuess()} - This function should take 
+	  two strings as input.  If the two strings are equivalent, return a 
+	  1 from the function.  If they're different, return a 0.  There are at 
+	  least two ways to do this: you may use the \mintinline{c}{strcmp()} 
+	  function from the string library or you can iterate over every character 
+	  in the strings.  You may assume that the strings are equal length.
+	\end{itemize}
+
+  \item Navigate to the \mintinline{text}{include} directory and open 
+	\mintinline{text}{gameFunctions.h} in the editor of your choice
+  \item Complete the function prototypes that you implemented in 
+	\mintinline{text}{gameFunctions.c} here.  
+  \item Compile the program using the \mintinline{text}{make} command and 
+	complete the worksheet.  
+\end{enumerate}
+
+\section{Advanced Activity (Optional)}
+
+Currently, the game has a strict limitation on the number and length of 
+words a user can enter in the dictionary.txt file.  Alter the program so 
+that it can accept any number of words and words of any length from 
+\mintinline{text}{dictionary.txt} (hint: you'll need to dynamically allocate 
+the memory for the array in \mintinline{text}{main.c}, among other 
+changes in \mintinline{text}{gameFunctions.h} and \mintinline{text}{gameFunctions.c}).  
+
+\end{document}
