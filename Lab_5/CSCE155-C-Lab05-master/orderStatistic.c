@@ -29,6 +29,8 @@ void insertionSort(int *arr, int n);
  */
 int getOrderStatistic(int *arr, int n, int i);
 
+int getMedian(int *array, int size);
+
 int main(int argc, char **argv) {
 
   if (argc < 3) {
@@ -48,8 +50,11 @@ int main(int argc, char **argv) {
 
   int ithElement = getOrderStatistic(numbers, numElements, ithOrder);
 
+  int median = getMedian(numbers, numElements);
+
   printf("The %dth element is: %d\n", ithOrder, ithElement);
 
+  printf("%d is the median\n", median);
   return 0;
 }
 
@@ -79,4 +84,36 @@ int * strToIntArray(char **strings, int numStrings) {
 int getOrderStatistic(int *arr, int n, int i) {
   insertionSort(arr, n);
   return arr[i-1];
+}
+
+int * insertionSort2(int *array, int size) {
+  int value;
+  int i;
+  int a = (int *) malloc(sizeof(int) * size);
+
+  for (int i = 0; i < size; ++i)
+  {
+    int j = i;
+    a[i] = array[j];
+  }
+
+  for(i=1; i<size; i++) {
+    value = a[i];
+    int j = i;
+    while(j > 0 && array[j-1] > value) {
+      a[j] = a[j-1];
+      j--;
+    }
+    a[j] = value;
+  }
+
+  return a;
+  free(a);
+  a = NULL;
+}
+
+int getMedian(int *array, int size){
+  int sortedArr = (int *) malloc(sizeof(int) * size);
+  sortedArr = insertionSort2(*array, size);
+  return sortedArr[size/2];
 }
