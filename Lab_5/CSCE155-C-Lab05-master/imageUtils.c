@@ -115,9 +115,7 @@ void imageToGrayScaleAverage(Pixel **image, int height, int width) {
 
   for(int i=0; i<height; i++) {
     for(int j=0; j<width; j++) {
-      int result = toGrayScaleAverage(image[i][j].red,
-				      image[i][j].green,
-				      image[i][j].blue);
+      int result = toGrayScaleAverage(image[i][j].red, image[i][j].green, image[i][j].blue);
       image[i][j].red   = result;
       image[i][j].green = result;
       image[i][j].blue  = result;
@@ -125,12 +123,11 @@ void imageToGrayScaleAverage(Pixel **image, int height, int width) {
   }
   return;
 }
+
 void imageToGrayScaleLightness(Pixel **image, int height, int width) {
   for(int i=0; i<height; i++) {
     for(int j=0; j<width; j++) {
-      int result = toGrayScaleLightness(image[i][j].red,
-                                      image[i][j].green,
-                                      image[i][j].blue);
+      int result = toGrayScaleLightness(image[i][j].red, image[i][j].green, image[i][j].blue);
       image[i][j].red   = result;
       image[i][j].green = result;
       image[i][j].blue  = result;
@@ -139,6 +136,7 @@ void imageToGrayScaleLightness(Pixel **image, int height, int width) {
   }
   return;
 }
+
 void imageToGrayScaleLuminosity(Pixel **image, int height, int width) {
   for(int i=0; i<height; i++) {
     for(int j=0; j<width; j++) {
