@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
   //compute sin(x) using a taylor series out to n terms
   for (int i = 0; i < n; ++i)
   {
-    result = ((pow(-1,n)/(factorial((2*n + 1))))*(pow(x,((2*n) +1.0))));
+    result = result + ((pow(-1,i)/(factorial((2*i + 1))))*(pow(x,((2*i) +1.0))));
   }
 
   printf("sin(%f) = %f\n", x, result);
